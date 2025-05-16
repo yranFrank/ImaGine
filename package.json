@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^1.9.0",
+    "debug": "^4.4.1",
     "encoding": "^0.1.13",
     "formdata-node": "^4.3.0",
     "next": "^13.4.4",
@@ -22,13 +23,13 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.0",
     "@types/node": "^20.0.0",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
+    "@types/react": "^18.3.21",
+    "@types/react-dom": "^18.3.7",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.43.0",
     "eslint-config-next": "^13.4.4",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.3.2",
-    "typescript": "^5.1.6"
+    "typescript": "^5.8.3"
   }
 }
