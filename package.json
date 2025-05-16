@@ -3,29 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "set NODE_OPTIONS=--max-old-space-size=4096 && next dev",
+    "build": "set NODE_OPTIONS=--max-old-space-size=4096 && next build",
+    "start": "set NODE_OPTIONS=--max-old-space-size=4096 && next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.13",
-    "axios": "^1.5.0",
+    "axios": "^1.9.0",
     "encoding": "^0.1.13",
+    "formdata-node": "^4.3.0",
     "next": "^13.4.4",
-    "openai": "^4.10.0",
-    "postcss": "^8.4.21",
+    "openai": "^4.98.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.3.2"
+    "sharp": "^0.34.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.0",
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "autoprefixer": "^10.4.14",
     "eslint": "^8.43.0",
     "eslint-config-next": "^13.4.4",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.3.2",
     "typescript": "^5.1.6"
   }
 }
