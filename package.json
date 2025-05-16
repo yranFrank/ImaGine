@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS=--max-old-space-size=4096 next dev",
+    "dev": "next dev",
     "build": "npm run install-sharp && NODE_OPTIONS=--max-old-space-size=4096 next build",
-    "start": "NODE_OPTIONS=--max-old-space-size=4096 next start",
+    "start": "next start",
     "lint": "next lint",
-    "install-sharp": "npm install --platform=linux --arch=x64 sharp"
+    "install-sharp": "rm -rf node_modules/sharp && npm install --platform=linux --arch=x64 sharp"
   },
   "dependencies": {
     "axios": "^1.9.0",
