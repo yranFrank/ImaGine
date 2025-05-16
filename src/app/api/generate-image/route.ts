@@ -38,19 +38,28 @@ export async function POST(req: NextRequest) {
 
     const sizeValue = allowedSizes[aspectRatio];
 
-    // Convert image to a compressed format
+    // Convert image to a compressed format with format detection
     const arrayBuffer = await file.arrayBuffer();
     let imageBuffer = Buffer.from(arrayBuffer);
 
+    const imageInfo = await sharp(imageBuffer).metadata();
+    if (!["jpeg", "png", "webp"].includes(imageInfo.format || "")) {
+      return NextResponse.json({ error: 'Unsupported image format' }, { status: 400 });
+    }
+
     imageBuffer = await sharp(imageBuffer)
-      .resize(1024, 1024, { fit: "inside" })
-      .jpeg({ quality: 70 })
+      .resize({
+        width: sizeValue === "auto" ? null : parseInt(sizeValue.split("x")[0]),
+        height: sizeValue === "auto" ? null : parseInt(sizeValue.split("x")[1]),
+        fit: "inside"
+      })
+      .toFormat(imageInfo.format as any, { quality: 70 })
       .toBuffer();
 
     console.log(" Compressed Image size:", imageBuffer.length, "bytes");
 
     const tempDir = os.tmpdir();
-    const tempFilePath = path.join(tempDir, "temp-image.jpg");
+    const tempFilePath = path.join(tempDir, `temp-image-${Date.now()}.jpg`);
     fs.writeFileSync(tempFilePath, imageBuffer);
 
     const response = await openai.images.edit({
@@ -65,6 +74,7 @@ export async function POST(req: NextRequest) {
       size: sizeValue
     });
 
+    // Clean up temporary file
     fs.unlinkSync(tempFilePath);
 
     const base64Data = response.data[0]?.b64_json;
