@@ -5,6 +5,8 @@ import fs from "fs";
 import path from "path";
 import os from "os";
 
+console.log("✅ Sharp Version:", sharp.version);
+console.log("✅ Sharp Installed Modules:", sharp.format);
 // Initialize OpenAI Client
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
