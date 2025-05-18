@@ -7,7 +7,7 @@
     "build": "NODE_OPTIONS='--max-old-space-size=4096' next build",
     "start": "NODE_OPTIONS='--max-old-space-size=4096' next start",
     "lint": "next lint",
-    "postinstall": "npm install --platform=linux --arch=x64 sharp"
+    "postinstall": "npm install sharp --platform=linux --arch=x64 --include=optional"
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",
@@ -19,7 +19,7 @@
     "postcss": "^8.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sharp": "^0.34.1",
+    "sharp": "^0.30.6",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
