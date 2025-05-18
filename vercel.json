@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "installCommand": "npm install --platform=linux --arch=x64 sharp",
+  "functions": {
+    "api/*": {
+      "maxDuration": 60,
+      "memory": 512
+    }
+  },
+  "env": {
+    "NODEJS_HELPERS": "0",
+    "SHARP_IGNORE_GLOBAL_LIBVIPS": "true"
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    }
+  ]
+}
