@@ -7,7 +7,7 @@
     "build": "NODE_OPTIONS='--max-old-space-size=4096' next build",
     "start": "NODE_OPTIONS='--max-old-space-size=4096' next start",
     "lint": "next lint",
-    "postinstall": "npm rebuild sharp --force"
+    "postinstall": "npm install --platform=linux --arch=x64 sharp && npm rebuild sharp --force"
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",
